@@ -297,7 +297,9 @@ private:
             return;
 
         db.setDatabaseName(path);
-        db.open();
+
+        if (!db.open())
+            return;
 
         if (!db.tables(QSql::Tables).contains("data"))
         {
@@ -318,6 +320,11 @@ private:
     void close()
     {
         db.close();
+    }
+
+    void create(const QString &path)
+    {
+
     }
 
 
